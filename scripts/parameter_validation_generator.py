@@ -227,12 +227,15 @@ class ParameterValidationOutputGenerator(OutputGenerator):
             'vkCmdTraceRaysIndirectKHR',
             'vkCmdBuildAccelerationStructureIndirectKHR',
             'vkGetDeviceAccelerationStructureCompatibilityKHR',
-            'vkBuildAccelerationStructureKHR',
-            'vkCmdBuildAccelerationStructureKHR',
             'vkCmdSetViewportWithCountEXT',
             'vkCmdSetScissorWithCountEXT',
             'vkCmdBindVertexBuffers2EXT',
             'vkCmdCopyBuffer2KHR',
+            'vkCmdBuildAccelerationStructuresKHR',
+            'vkCmdBuildAccelerationStructuresIndirectKHR',
+            'vkBuildAccelerationStructuresKHR',
+            'vkGetAccelerationStructureBuildSizesKHR',
+            'vkCmdWriteAccelerationStructuresPropertiesNV'
             ]
 
         # Commands to ignore
@@ -248,7 +251,7 @@ class ParameterValidationOutputGenerator(OutputGenerator):
             ]
 
         # Structure fields to ignore
-        self.structMemberBlacklist = { 'VkWriteDescriptorSet' : ['dstSet'] }
+        self.structMemberBlacklist = { 'VkWriteDescriptorSet' : ['dstSet'], 'VkAccelerationStructureGeometryKHR' :['geometry'] }
         # Validation conditions for some special case struct members that are conditionally validated
         self.structMemberValidationConditions = { 'VkPipelineColorBlendStateCreateInfo' : { 'logicOp' : '{}logicOpEnable == VK_TRUE' } }
         # Header version
